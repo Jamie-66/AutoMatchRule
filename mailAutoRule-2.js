@@ -96,7 +96,7 @@ requirejs(['https://content.banggood.cn/Content/config.js'], function () {
             for (_i in storageArr[key]) {
               var _html = '<a>'+ storageArr[key][_i] +';</a>';
               textControl.append(_html);
-
+              keywordLength(textControl);
               if (!keywordHide(textControl)) {
                 keywordHideRest(textControl);
               }
@@ -159,6 +159,7 @@ requirejs(['https://content.banggood.cn/Content/config.js'], function () {
 
     //切换
     function transForm (_this) {
+      console.log(33)
       var _Link = $(_this).data('link');
       var _Class = $(_this).find('.checkbox-msg').attr('id');
       var Id = $(_this).find('.checkbox-msg').attr('id');
