@@ -83,7 +83,7 @@ requirejs(['https://content.banggood.cn/Content/config.js'], function () {
                 textControl.append('<span class="group-title">'+ _key +'</span>');
                 
                 for (j in storageArr[key][i][_key]) {
-                  textControl.append('<a class="group_item">'+ storageArr[key][i][_key][j].text +';</a>');
+                  textControl.append('<a class="group_item" title="'+ storageArr[key][i][_key][j].text +'">'+ storageArr[key][i][_key][j].text +';</a>');
 
                   if (!keywordHide(textControl)) {
                     keywordHideRest(textControl);
