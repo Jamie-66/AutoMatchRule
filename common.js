@@ -1,5 +1,5 @@
 
-var baseUrl = '/SCB/5.5-人工智能机器回复项目/';
+var baseUrl = '';
 var mailAutoRule_step1 = 'mailAutoRule_step1';
 var mailAutoRule_step2 = 'mailAutoRule_step2';
 var mailAutoRule_step3 = 'mailAutoRule_step3';

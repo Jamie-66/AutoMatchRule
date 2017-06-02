@@ -159,7 +159,6 @@ requirejs(['https://content.banggood.cn/Content/config.js'], function () {
 
     //切换
     function transForm (_this) {
-      console.log(33)
       var _Link = $(_this).data('link');
       var _Class = $(_this).find('.checkbox-msg').attr('id');
       var Id = $(_this).find('.checkbox-msg').attr('id');
@@ -459,9 +458,10 @@ requirejs(['https://content.banggood.cn/Content/config.js'], function () {
         formSelector.show();
       }
 
-      var _html = '<a>'+ _keyword +';</a>';
+      var _html = '<a title="'+ _keyword +'">'+ _keyword +';</a>';
       _cur.find('.tit').addClass('hidden');
       _cur.append(_html);
+
       wordsList.find('.key-content').each(function(){
         keyWordArr.push($(this).text());
       })
@@ -507,6 +507,10 @@ requirejs(['https://content.banggood.cn/Content/config.js'], function () {
       if (cur_a.outerWidth(true) >= cur_parent.width() + cur_parent.offset().left - _curr.offset().left - _showMore) {
         var text = _curr.find('a').eq(-1).text();
         cur_a.text(text.substring(0,text.length/4)+'...;');
+        // cur_a.popover({
+        //   styleType: 'normal',
+        //   content: text
+        // });
       }
     }
 
