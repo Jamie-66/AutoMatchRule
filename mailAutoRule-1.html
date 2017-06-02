@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"> 
+	<title>mailAutoRule-1</title>
+	<link rel="stylesheet" href="https://content.banggood.cn/Content/lib/bootstrap-3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://content.banggood.cn/Content/lib/font-awesome-4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="mailAutoRule.css">
+  <script src="common.js"></script>
+</head>
+<body>
+	<div class="container-fluid" id="content">
+    <div class="col-sm-12 container-form">
+      <form data-toggle="validator" role="form" novalidate="novalidate">
+        <div class="form-header">全部条件</div>
+        <div class="form-content">
+
+          <div class="form-group" id="account_select">
+            <div class="form-group-tit"><span>平台账号</span></div>
+            <div class="form-group-bd">
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar active disabled" value="1"></div>
+                  <div class="checkbox-msg"><span class="require">邮件来源为</span><a>指定邮件目录 / 邮箱账号</a></div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <!-- form-group e -->
+  			  <div class="form-group" id="mail-select">
+            <div class="form-group-tit"><span>邮件</span></div>
+            <div class="form-group-bd">
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar active disabled" value="1"></div>
+                  <div class="checkbox-msg"><span class="require">邮件处理人为</span><a>指定处理人</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="2"></div>
+                  <div class="checkbox-msg"><span>邮件标签为</span><a>指定邮件标签</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="3"></div>
+                  <div class="checkbox-msg"><span>邮件问题标签为</span><a>指定问题标签</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="4"></div>
+                  <div class="checkbox-msg"><span>邮件内容包含</span><a>邮件内容包含关键字</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="5"></div>
+                  <div class="checkbox-msg"><span>邮件标题包含</span><a>邮件标题包含关键字</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="6"></div>
+                  <div class="checkbox-msg"><span>邮件客户邮箱为</span><a>指定客户邮箱</a></div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <!-- form-group e -->
+          <div class="form-group" id="order-select">
+            <div class="form-group-tit"><span>订单</span></div>
+            <div class="form-group-bd">
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="1"></div>
+                  <div class="checkbox-msg"><span>订单邮寄方式为</span><a>指定邮寄方式</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="2"></div>
+                  <div class="checkbox-msg"><span>订单发货时间为</span><a>指定范围</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="3"></div>
+                  <div class="checkbox-msg"><span>订单目的地为</span><a>指定国家</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="4"></div>
+                  <div class="checkbox-msg"><span>订单总价值</span><a>指定范围</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="5"></div>
+                  <div class="checkbox-msg"><span>订单状态</span><a>指定订单状态</a></div>
+                </div>
+              </label>
+              <label class="form-group-item">
+                <div class="checkbox-inline">
+                  <div class="check-bar" value="6"></div>
+                  <div class="checkbox-msg"><span>订单最后物流跟踪信息包含</span><a>指定关键词</a></div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <!-- form-group e -->
+        </div>
+
+        <div id="actionbar">
+          <div class="container-fluid">
+            <div class="pull-right">
+              <button class="btn btn-sm btn-primary" id="btnNext" type="button">下一步</button>
+              <button class="btn btn-sm btn-default" id="btnClose" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+          </div>
+        </div>
+        <!-- actionbar e -->
+      </form>
+    </div>
+  </div>
+  <!-- #content e -->
+  
+  <script src="https://content.banggood.cn/Content/lib/requirejs/require.js"></script>
+  <script>
+    requirejs(['https://content.banggood.cn/Content/config.js'], function () {
+      requireBundle([
+        '@edit',
+        'jquery-cookie'
+        ], function() {
+        //取消
+        $('#btnClose').bindClose();
+
+        //读取cookie
+        if (storage.getItem(mailAutoRule_step1)) {
+          var allselect = JSON.parse(storage.getItem(mailAutoRule_step1));
+          for (k in allselect) {
+            for (j in allselect[k]) {
+              $($('#'+ k).find('[value='+ allselect[k][j] +']')).addClass('active');
+            }
+          }
+        }
+
+        //下一步
+        $('#btnNext').click(function(){
+          var selectMsg = {};
+          $('.form-group').each(function(ind, ele){
+            var ts = ele.id;
+            selectMsg[ts] = [];
+            $($('#'+ ts).find('.active')).each(function(i, e){
+              // if (!$(this).hasClass('disabled')) {
+                selectMsg[ts].push($(this).attr('value'));
+              // }
+            });
+          });
+          storage.setItem(mailAutoRule_step1, JSON.stringify(selectMsg));
+          window.location.href = "mailAutoRule-2.html";
+        });
+
+        //条件选择
+        $('.form-group .checkbox-inline').click(function(){
+          if ($(this).find('.check-bar').hasClass('disabled')) {
+            return false;
+          } else {
+            $(this).find('.check-bar').toggleClass('active');
+          }
+        });
+
+      });
+    });
+  </script>
+</body>
+</html>

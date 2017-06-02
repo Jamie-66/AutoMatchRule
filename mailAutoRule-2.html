@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mailAutoRule-2</title>
+	<link rel="stylesheet" href="https://content.banggood.cn/Content/lib/bootstrap-3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://content.banggood.cn/Content/lib/font-awesome-4.6.3/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="jquery.MultiSelectControl_c.css">
+  <link rel="stylesheet" href="mailAutoRule.css">
+  <!-- <link rel="stylesheet" href="https://content.banggood.cn/Content/lib/bootstrap-3.3.7/css/less/forms.less"> -->
+  <script src="https://content.banggood.cn/Content/lib/requirejs/require.js"></script>
+  <script src="https://content.banggood.cn/Content/lib/jquery/jquery-3.1.0.min.js"></script>
+  <script src="https://content.banggood.cn/Content/lib/jquery-cookie-1.4.0/jquery.cookie.js"></script>
+  <script src="common.js"></script>
+  <script src="jquery.MultiSelectControl_c.js"></script>
+  <script src="mailAutoRule-template.js"></script>
+  <script src="mailAutoRule-2.js"></script>
+</head>
+<body>
+	<div class="container-fluid" id="content">
+
+    <div class="col-sm-6 left-form container-form">
+
+      <div class="side-bar open"></div>
+      <!-- side-bar e  -->
+      <form data-toggle="validator" role="form" novalidate="novalidate">
+        <div class="form-header">全部条件</div>
+        <!-- left-side-title  e  -->
+        <div class="form-content group-content">
+          <!-- 已选条件 b -->
+          <div class="form-select">
+            <div class="form-group-tit"><span>已选条件</span></div>
+            <div class="form-group" id="form-account">
+              <div class="form-group-tit"><span>平台账号</span></div>
+              <div class="form-group-bd">
+                <label class="form-group-item group-toggle active">
+                  <div class="checkbox-inline require" data-link="multiSelect_temp">
+                    <!-- <i class="fa fa-fw fa-times disabled"></i> -->
+                    <div class="checkbox-msg" id="Account_text"><span class="prefix_tit">邮件来源为</span><a class="tit">指定邮件目录 / 邮箱账号</a></div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <!-- form-group e -->
+            <div class="form-group" id="form-mail">
+              <div class="form-group-tit"><span>邮件</span></div>
+              <div class="form-group-bd">
+                <label class="form-group-item group-toggle">
+                  <div class="checkbox-inline require" data-link="multiSelect_temp">
+                    <!-- <i class="fa fa-fw fa-times disabled"></i> -->
+                    <div class="checkbox-msg" id="User_text"><span class="prefix_tit">邮件处理人为</span><a class="tit">指定处理人</a></div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <!-- form-group e -->
+            <div class="form-group" id="form-order">
+              <div class="form-group-tit"><span>订单</span></div>
+              <div class="form-group-bd"></div>
+            </div>
+            <!-- form-group e -->
+            
+            <div class="form-view-bar">
+              <div id="allopen"><i class="fa fa-expand"></i><span>全部展开</span></div>
+              <div id="allfold"><i class="fa fa-compress"></i><span>全部折叠</span></div>
+            </div>
+            <!-- form-view-bar e -->
+          </div>
+          <!-- 已选条件 e -->
+
+          <!-- 可选条件 b -->
+          <div class="form-optional">
+            <div class="pro-group" id="form-group-bar">
+              <div class="pro-group-tit">
+                <div class="pro-arrow"><i class="fa fa-angle-up"></i></div>
+                <label class="checkAll"><strong>可选条件</strong></label>
+              </div>
+            </div>
+            <div>
+              <div class="form-group" id="mail-select" toform="form-mail">
+                <div class="form-group-tit"><span>邮件</span></div>
+                <div class="form-group-bd">
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-mail" data-link="multiSelect_temp">
+                      <div class="check-bar" value="2"></div>
+                      <div class="checkbox-msg" id="Tag_text"><span class="prefix_tit">邮件标签为</span><a class="tit">指定邮件标签</a></div>
+                    </div>
+                  </label>
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-mail" data-link="multiSelect_temp">
+                      <div class="check-bar" value="3"></div>
+                      <div class="checkbox-msg" id="Question_text"><span class="prefix_tit">邮件问题标签为</span><a class="tit">指定问题标签</a></div>
+                    </div>
+                  </label>
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-mail" data-link="keyWord_temp">
+                      <div class="check-bar" value="4"></div>
+                      <div class="checkbox-msg" id="Content_text"><span class="prefix_tit">邮件内容包含</span><a class="tit">邮件内容包含关键字</a></div>
+                    </div>
+                  </label>
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-mail" data-link="keyWord_temp">
+                      <div class="check-bar" value="5"></div>
+                      <div class="checkbox-msg" id="Title_text"><span class="prefix_tit">邮件标题包含</span><a class="tit">邮件标题包含关键字</a></div>
+                    </div>
+                  </label>
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-mail" data-link="keyWord_temp">
+                      <div class="check-bar" value="6"></div>
+                      <div class="checkbox-msg" id="Mail_text"><span class="prefix_tit">邮件客户邮箱为</span><a class="tit">指定客户邮箱</a></div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <!-- form-group e -->
+              <div class="form-group" id="order-select" toform="form-order">
+                <div class="form-group-tit"><span>订单</span></div>
+                <div class="form-group-bd">
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-order" data-link="multiSelect_temp">
+                      <div class="check-bar" value="1"></div>
+                      <div class="checkbox-msg" id="Postage_text"><span class="prefix_tit">订单邮寄方式为</span><a class="tit">指定邮寄方式</a></div>
+                    </div>
+                  </label>
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-order" data-link="Date_temp">
+                      <div class="check-bar" value="2"></div>
+                      <div class="checkbox-msg" id="Date_text"><span class="prefix_tit">订单发货时间为</span><a class="tit">指定范围</a></div>
+                    </div>
+                  </label>
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-order" data-link="multiSelect_temp">
+                      <div class="check-bar" value="3"></div>
+                      <div class="checkbox-msg" id="Country_text"><span class="prefix_tit">订单目的地为</span><a class="tit">指定国家</a></div>
+                    </div>
+                  </label>
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-order" data-link="Value_temp">
+                      <div class="check-bar" value="4"></div>
+                      <div class="checkbox-msg" id="Value_text"><span class="prefix_tit">订单总价值</span><a class="tit">指定范围</a></div>
+                    </div>
+                  </label>
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-order" data-link="multiSelect_temp">
+                      <div class="check-bar" value="5"></div>
+                      <div class="checkbox-msg" id="State_text"><span class="prefix_tit">订单状态</span><a class="tit">指定订单状态</a></div>
+                    </div>
+                  </label>
+                  <label class="form-group-item">
+                    <div class="checkbox-inline" data-for="form-order" data-link="keyWord_temp">
+                      <div class="check-bar" value="6"></div>
+                      <div class="checkbox-msg" id="Logistical_text"><span class="prefix_tit">订单最后物流跟踪信息包含</span><a class="tit">指定关键词</a></div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <!-- form-group e -->
+            </div>
+          </div>
+        <!-- 可选条件 e -->
+        </div>
+      </form>
+    </div>
+    
+    <div class="col-sm-6 right-form container-form">
+      <form data-toggle="validator" role="form" novalidate="novalidate" id="form_main">
+        <div class="form-header"><div class="form-group-msg" id="form-head-tit"></div></div>
+        <div class="form-content group-content"></div>
+      </form>
+    </div>
+
+    <div id="actionbar">
+      <div class="container-fluid">
+        <div class="pull-right">
+          <button class="btn btn-sm btn-default btn-prev" id="btnPrev" type="button">上一步</button>
+          <button class="btn btn-sm btn-primary" id="btnNext" type="button">下一步</button>
+          <button class="btn btn-sm btn-default" id="btnClose" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+        </div>
+      </div>
+    </div>
+    <!-- actionbar e -->
+  </div>
+  <!-- #content e -->
+</body>
+</html>

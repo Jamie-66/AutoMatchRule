@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mailAutoRule-3</title>
+	<link rel="stylesheet" href="https://content.banggood.cn/Content/lib/bootstrap-3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://content.banggood.cn/Content/lib/font-awesome-4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="https://content.banggood.cn/Content/lib/scb-pinyin-select/down-select.css"> -->
+  <link rel="stylesheet" href="mailAutoRule.css">
+  <!-- <script src="https://content.banggood.cn/Content/lib/scb-pinyin-select/ChineseToPinyin.js"></script> -->
+  <!-- <script src="../Demos/demo-111.js"></script> -->
+  <script src="common.js"></script>
+</head>
+<body>
+	<div class="container-fluid" id="content">
+    <div class="col-sm-12 container-form">
+      <form data-toggle="validator" role="form" novalidate="novalidate">
+        <div class="form-container">
+
+          <div class="form-group">
+            <div class="form-group-head require"><span class="h-title">规则名称</span></div>
+            <div class="form-group-con">
+              <input id="roleName" name="roleName" type="text" class="form-control form-role" required data-val="true" data-val-required="不允许为空。" placeholder="请输入规则名称">
+              <div class="valid-text">
+                <span class="field-validation-error" data-valmsg-for="roleName" data-valmsg-replace="true"></span>
+              </div>
+            </div>
+          </div>
+          <!-- form-group e -->
+  			  <div class="form-group">
+            <div class="form-group-head"><span class="h-title">选择邮件模板</span></div>
+            <div class="form-group-con">
+              <div class="form-template clearfix">
+                <label class="form-label group-title">平台账号</label>
+                <div class="col-xs-4 form-template-input" id="account_template">
+                  <label class="col-lg-5">
+                   <input type="radio" name="template-input" value="personal_t" checked>
+                   <span>个人模板</span>
+                  </label>
+                  <label class="col-lg-5">
+                   <input type="radio" name="template-input" value="standard_t">
+                   <span>标准模板</span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-template clearfix">
+                <label class="form-label group-title">回复模板</label>
+                <div class="col-xs-2">
+                  <select class="form-control input-sm chosen" data-val="true" data-val-required="不允许为空。" name="chosen">
+                    <option value="">请选择</option>
+                    <option value="paypal@newchic.com">恒世通有限公司-paypal@newchic.com</option>
+                    <option value="PP09306636">香港棒谷-PP09306636</option>
+                    <option value="mieiel679@gmail.com">恒世通有限公司-mieiel679@gmail.com</option>
+                    <option value="waitformine@gmail.com">恒世通有限公司-waitformine@gmail.com</option>
+                    <option value="chesmkk@gmail.com">恒世通有限公司-chesmkk@gmail.com</option>
+                    <option value="e">沙发-e</option>
+                  </select>
+                  <div class="valid-text">
+                    <span class="field-validation-error" data-valmsg-for="chosen" data-valmsg-replace="true"></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- form-group e -->
+          <div class="form-group">
+            <div class="form-group-head"><span class="h-title">设定动作</span></div>
+            <div class="form-group-con">
+              <div class="form-template clearfix">
+                <label class="form-label group-title">订单自动处理动作</label>
+                <div class="col-sm-3 form-template-input" id="auto_template">
+                  <label class="col-sm-12">
+                   <input type="radio" name="autoAction" value="automatic_t" checked>
+                   <span>自动选择邮件模板</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- form-group e -->
+        </div>
+
+        <div id="actionbar">
+          <div class="container-fluid">
+            <div class="pull-right">
+              <button class="btn btn-sm btn-default btn-prev" id="btnPrev" type="button">上一步</button>
+              <button class="btn btn-sm btn-primary" id="btnSubmit" type="submit">&nbsp;&nbsp;完成&nbsp;&nbsp;</button>
+              <button class="btn btn-sm btn-default" id="btnClose" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+          </div>
+        </div>
+        <!-- actionbar e -->
+      </form>
+    </div>
+  </div>
+  <!-- #content e -->
+
+  <script src="https://content.banggood.cn/Content/lib/requirejs/require.js"></script>
+  <script>
+    requirejs(['https://content.banggood.cn/Content/config.js'], function () {
+
+
+      requirejs(['ui','chosen','jquery.edit','pinyin-select'], function(ui) {
+        //取消
+        $('#btnClose').bindClose();
+
+        //上一步
+        $('#btnPrev').click(function(){
+          window.location.href = "mailAutoRule-2.html";
+        });
+        $('#btnSubmit').bindSubmit();
+
+        //回车添加关键词
+        $(document).on('keydown',function(event){
+          var oEvent = event || window.event;
+          if (oEvent.keyCode == '13') {
+            stopDefault(oEvent);
+          }
+        });
+
+        // chosen 下拉选择，需开启 search_contains 才可全文匹配
+        $('.chosen').chosen({ search_contains: true });
+
+        //初始化
+        var initObj = getStorage(mailAutoRule_step3);
+        if (initObj) {
+          for (key in initObj) {
+            switch (key) {
+              case 'roleName':
+                $('#'+key).val(initObj[key]);
+                break;
+
+              case 'response_template':
+                $('#'+key).find('li[selectindex='+ initObj[key]['index'] +']').click();
+                break;
+
+              case 'account_template':
+              case 'auto_template':
+                $('#'+key).find('input[value="'+ initObj[key] +'"]').prop('checked', true);
+                break;
+
+              default: break;
+            }
+          }
+        }
+
+        //把一选定的单选数据保存到storage
+        $('input[type=radio]').each(function(){
+          if ($(this).prop('checked')) {
+            var _keyname = $(this).parent().parent().attr('id');
+            var _value = $(this).val();
+            setStorage(mailAutoRule_step3, _keyname, _value);
+          }
+        })
+
+        //完成
+        // $('#btnSubmit').click(function(e){
+
+        //   var oEvent = e || window.event;
+        //   stopDefault(oEvent);
+        //   if ($('#roleName').val() == '') {
+        //     var text = $('#roleName').parent().prev().text();
+        //     ui.dialog.error({
+        //       title: '失败提示',
+        //       content: text+'不能为空'
+        //     });
+        //   } else {
+        //     // console.log(getStorage(mailAutoRule_step2));
+        //     // console.log(getStorage(mailAutoRule_step3));
+        //   }
+        // });
+
+        //规则名称
+        $('#roleName').change(function(){
+          var _keyname = $(this).attr('id');
+          var _value = $(this).val();
+          setStorage(mailAutoRule_step3, _keyname, _value);
+        });
+
+        //邮件模板 ---- 平台账号
+        $('#account_template input[type=radio]').change(function(){
+          var _keyname = $(this).parent().parent().attr('id');
+          var _value = $(this).val();
+          setStorage(mailAutoRule_step3, _keyname, _value);
+        })
+
+
+        //邮件模板 ---- 回复模板
+        $('.newDrop').click(function(e){
+          var _keyname = $('.newDrop').parent().attr('id');
+          if ($(e.target).is('li')) {
+            var _value = $(e.target).text();
+            var _index = $(e.target).attr('selectindex');
+            setStorage(mailAutoRule_step3, _keyname, {index: _index, text: _value});
+
+          } else if ($(e.target).is('.fa.fa-times.clean-select-text')) {
+            var obj = getStorage(mailAutoRule_step3);
+            delete obj[_keyname];
+            storage.setItem(mailAutoRule_step3, JSON.stringify(obj));
+          }
+        })
+
+        //设定动作 ---- 订单自动处理
+        $('#auto_template input[type=radio]').change(function(){
+          var _keyname = $(this).parent().parent().attr('id');
+          var _value = $(this).val();
+          setStorage(mailAutoRule_step3, _keyname, _value);
+        })
+
+      });
+    });
+  </script>
+</body>
+</html>

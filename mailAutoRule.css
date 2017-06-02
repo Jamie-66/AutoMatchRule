@@ -1,0 +1,126 @@
+html,body { height: 100%; width: 100%; }
+/* 正文区域 */
+#content { position: absolute; left: 0; right: 0; top: 0; bottom: 60px; overflow: hidden; padding-top: 15px; padding-left: 0; padding-right: 0; }
+/* 底部按钮栏 */
+#actionbar { position: fixed; left: 0; right: 0; bottom: 0; padding: 15px; }
+#actionbar .btn { margin: 0 5px; }
+#actionbar .container-fluid { padding-right: 0; }
+#actionbar .btn:last-child { margin-right: 0; }
+#actionbar .btn-prev { border-color: #2e6da4; color: #337ab7; }
+
+/* 绝对定位 */
+.container-form { position: absolute; top: 15px; bottom: 0; right: 0; left: 0; }
+.container-form>form { position: absolute; top: 0; bottom: 0; left: 15px; right: 15px; }
+.container-form>form>.form-content { position: absolute; top: 38px; bottom: 0; left: 0; right: 0; }
+.container-form>form>.form-container { position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
+.left-form { right: 50%; }
+.right-form { left: 50%; }
+.sear-group { position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
+
+/* 表单元素 1 */
+.form-header { font-weight: 900; color: #337ab7; padding: 9px 3px; }
+.form-content { border: 1px solid #c5c5c5; }
+.form-content .form-group { margin: 0; padding-bottom: 5px; }
+.form-content .form-group:not(:last-child) { border-bottom: 1px solid #c5c5c5; }
+.form-group .form-group-item { width: 100%; padding: 2px 10px; margin-bottom: 0; font-size: 12px; font-family: "Open Sans"; }
+.form-group .form-group-item.active{ background-color: #fff8d1; }
+.form-group .form-group-item.active .checkbox-inline { background-color: transparent; }
+.form-group .checkbox-inline { padding: 3px 6px; }
+.form-content .form-select .form-group, 
+.form-content .form-optional .form-group { border: none; }
+.form-select, .form-optional { margin-bottom: 12px; position: relative; }
+.form-select .checkbox-inline { font-weight: 400; padding: 4px 0 4px 24px; background-color: #f3f3f3; border-radius: 4px; overflow: hidden; margin-bottom: -2px; }
+.form-select .form-group-item { margin-bottom: 7px;  }
+.form-group .checkbox-msg { padding-left: 7px; font-size: 12px; overflow: hidden; }
+.form-select .checkbox-msg { padding-left: 0; }
+.form-select .checkbox-msg a { padding-right: 6px; float: left; }
+.form-group .checkbox-msg span { margin-right: 7px; float: left; }
+.check-bar { position: relative; width: 14px; height: 14px; display: inline-block; float: left; cursor: pointer; }
+.check-bar:before { position: absolute; top: 2px; left: 0px; width: 14px; height: 14px; border: 1px solid #c5c5c5; border-radius: 2px; background: #ededed; content: ""; }
+.check-bar:after { position: absolute; top: 6px; left: 3px; width: 8px; height: 5px; background: transparent; border: 2px solid transparent; border-top: none; border-right: none; opacity: 0.05; content: ""; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); }
+.check-bar.active:before { background: #2599ab; border-color: #2599ab; }
+.check-bar.active:after { opacity: 1; border-color: #fff; }
+.check-bar.disabled:before, 
+.check-bar.disabled:after { opacity: .7; cursor: not-allowed; }
+.checkbox-inline .require:before { content: "*"; color: red; position: relative; top: 3px; left: -1px; }
+.checkbox-inline.require { padding-left: 6px; }
+.checkbox-inline.require .checkbox-msg .prefix_tit:before { content: "*"; color: red; position: relative; top: 3px; left: 2px; padding-right: 12px; }
+
+/* 表单元素 2 */
+.left-form.active { width: 100%; }
+.side-bar { position: absolute; width: 15px; top: 38px; right: 0; bottom: 0; cursor: pointer; }
+.side-bar:before { content: ''; position: absolute; right: 5px; top: 50%; margin-top: -7px; width: 14px; height: 14px; border: 2px solid #338cd9; border-top: none; border-left: none; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); cursor: pointer; }
+.side-bar:after { content: ''; position: absolute; right: 9px; top: 50%; margin-top: -3px; width: 6px; height: 6px; border: 2px solid #000; border-top: none; border-left: none; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); cursor: pointer; }
+.side-bar.active:before { content: ''; position: absolute; right: -4px; top: 50%; margin-top: -7px; width: 14px; height: 14px; border: 2px solid #338cd9; border-bottom: none; border-right: none; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); cursor: pointer; }
+.side-bar.active:after { content: ''; position: absolute; right: 0; top: 50%; margin-top: -3px; width: 6px; height: 6px; border: 2px solid #000; border-bottom: none; border-right: none; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); cursor: pointer; }
+.group-content { overflow-y: auto; }
+.group-title { float: left; }
+.group-title:after { content: ":"; font-weight: bold; vertical-align: top; display: inline-block; width: 10px; margin-right: -10px; }
+.form-group-tit { padding: 6px 0 5px 12px; font-weight: 700; color: #333; }
+.form-group-item i { position: absolute; top: 6px; left: 3px; color: #999; cursor: pointer; -webkit-transition: color .3s ease; -ms-transition: color .3s ease; -moz-transition: color .3s ease; -o-transition: color .3s ease; transition: color .3s ease; }
+.form-group-item i:hover { color: #333; }
+.form-group-msg { padding-left: 5px; display: inline-block; cursor: pointer; }
+.form-group-msg a { margin-left: 7px; font-weight: normal; }
+.showmore, .hidemore { color: #337ab7; position: absolute; right: 0; bottom: 2px; }
+.pro-search .input-group button#pmsearchButton { top: 4px; }
+.form-optional .pro-group { margin-bottom: 0; padding-left: 12px; padding-right: 15px; }
+.pro-group-tit strong { position: relative; background-color: #fff; padding-right: 8px; font-size: 14px; }
+.form-search { margin-left: 12px; margin-right: 12px; border-bottom: 1px solid #c5c5c5; padding-bottom: 30px; }
+.group-content .form-keyword { margin-left: 12px; margin-right: 12px; }
+.form-search-key { float: left; padding-top: 7px; }
+.form-search-key:after { content: ":"; font-weight: bold; vertical-align: middle; display: inline-block; width: 10px; margin-right: -10px; }
+.select-count, .order-tip { padding: 10px 0 10px; margin-bottom: 10px; position: relative; }
+.select-word { padding: 10px 0 10px; }
+.select-count .count-num { color: #337ab7; }
+.select-cont-search { padding: 0 15px 0px 15px; min-width: 120px; width: 100%; position: relative; }
+.select-cont-search input { height: 30px; padding-left: 10px; padding-right: 25px; font-size: 12px; border-radius: 3px; }
+.select-key-search input { height: 30px; width: 100%; padding-left: 10px; padding-right: 25px; margin: 0px; font-size: 12px; border-width: 1px; border-style: solid; border-color: #ccc; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); -webkit-transition: border linear 0.2s, box-shadow linear 0.2s; -moz-transition: border linear 0.2s, box-shadow linear 0.2s; -o-transition: border linear 0.2s, box-shadow linear 0.2s; -ms-transition: border linear 0.2s, box-shadow linear 0.2s; transition: border linear 0.2s, box-shadow linear 0.2s; }
+.select-key-search i { position: absolute; right: 26px; top: 8px; font-size: 14px; color: #666666; }
+.select-cont-search select { font-size: 14px; }
+.select-multiple ul { position: relative; padding: 0; overflow: hidden; width: 100%; list-style: none; }
+.select-multiple ul li { max-width: 100%; font-size: 14px; position: relative; float: left; margin-top: 10px; margin-right: 10px; padding: 4px 18px 4px 5px; cursor: default; user-select: none; border-radius: 4px; background-color: #f3f3f3; }
+.select-multiple ul li .key-content { display: inline-block; padding: 0 8px; overflow: hidden; max-width: 100%; white-space: nowrap; text-overflow: ellipsis; float: left; }
+.select-multiple li .remove { font-weight: 700; position: absolute; top: 4px; right: 2px; display: inline-block; cursor: pointer; transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); text-align: center; color: #999; }
+.select-multiple li .remove:hover { color: #333; }
+.order-tip span { padding-left: 7px; }
+.order-tip:before { content: "*"; color: red; position: relative; top: 3px; left: 3px; }
+.form-date { margin-left: 12px; margin-right: 12px; padding-bottom: 30px; }
+.form-date .check-bar { top: 6px; left: 6px; margin-right: 10px; }
+.upper, .lower { padding-top: 10px; padding-bottom: 10px; }
+.upper-date, .lower-date { float: left; height: 30px; line-height: 30px; }
+.upper-bar, .lower-bar { padding: 0; }
+.form-view-bar { position: absolute; right: 10px; top: 5px; }
+.form-view-bar>div { display: inline-block; color: #337ab7; padding: 5px 10px; cursor: pointer; }
+.form-view-bar>div>i { transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -webkit-transform: rotate(-45deg); }
+.form-search .addWord { float: left; }
+
+
+
+/* 表单元素 3 */
+.form-container { padding-left: 12px; }
+.form-label { padding-top: 7px; margin-bottom: 0; text-align: right; font-weight: normal; }
+.form-template { margin-bottom: 15px; }
+.form-group-con { padding-left: 12px; }
+.template-control { padding-right: 15px; padding-left: 15px; }
+.form-group-head { padding: 16px 0 10px 12px; font-weight: 700; color: #333; }
+.h-title { color: #337ab7; font-weight: 900; }
+.form-role { width: 35%; }
+.form-group-con label { font-weight: normal; }
+.form-template-input { padding-top: 7px; }
+.form-template-input input { float: left; }
+.form-template-input span { float: left; padding-left: 7px; }
+.form-container .require:after { content: "*"; color: red; position: relative; top: 3px; left: 3px; }
+
+/* 表单元素 4 */
+.form-horizontal .form-group { margin-right: 0; margin-left: 0; }
+.control-label { padding-top: 7px; margin-bottom: 0; text-align: right; font-weight: normal; min-width: 125px; color: #337ab7; }
+.control-label:after { content: ":"; font-weight: bold; vertical-align: middle; display: inline-block; width: 10px; margin-right: -10px; }
+.form-text{ padding-top: 7px;}
+.form-text .form-msg { display: inline-block; }
+.form-list { margin-bottom: 15px; }
+.form-list .form-list-item { margin-right: 5px; }
+.form-or .form-list-item { margin-left: 5px; }
+.form-list .form-msg { color: #555; }
+
+
+
