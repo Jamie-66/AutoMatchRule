@@ -5,24 +5,23 @@ var template_Arr = [
 	        		},
 
     {keyWord_temp: `<div><div class="form-search">
-            		  <div class="select-count">已选 <span class="count-num">0</span> 项</div>
-            		  <div class="clearfix">
-            		    <label for="discount" class="form-search-key">关键词</label>
-            		    <div class="col-xs-7">
-            		      <div class="select-key-search">
-            		        <input class="keywordContCol" type="text" value="" placeholder="请输入关键字">
-            		        <i class="fa fa-search"></i>
+            		  <div class ="select-count">已选 <span class ="count-num">0</span> 项</div>
+            		  <div class ="clearfix">
+            		    <label for="discount" class ="form-search-key">请输入</label>
+            		    <div class ="col-xs-7">
+            		      <div class ="select-key-search">
+            		        <input class ="keywordContCol" type="text" value="" placeholder="请输入内容">
             		      </div>
             		    </div>
-            		    <div class="addWord">
-            		      <button type="button" class="btn btn-sm btn-success addKeyWords" data-for="keyList">&nbsp;添加&nbsp;</button>
+            		    <div class ="addWord">
+            		      <button type="button" class ="btn btn-sm btn-success addKeyWords" data-for="keyList">&nbsp; 添加&nbsp; </button>
             		    </div>
             		  </div>
             		</div>
-            		<div class="form-keyword form-group hidden">
-            		  <div class="select-word">已添加关键词</div>
-            		  <div class="select-multiple">
-            		    <ul class="select_words_list">
+            		<div class ="form-keyword form-group hidden">
+            		  <div class ="select-word">已添加：</div>
+            		  <div class ="select-multiple">
+            		    <ul class ="select_words_list">
             		    </ul>
             		  </div>
             		</div></div>`
