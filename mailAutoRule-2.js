@@ -94,7 +94,7 @@ requirejs(['https://content.banggood.cn/Content/config.js'], function () {
 
           } else if (dtlink == 'keyWord_temp') {
             for (_i in storageArr[key]) {
-              var _html = '<a>'+ storageArr[key][_i] +';</a>';
+                var _html = '<a title="' + storageArr[key][_i] + '">' + storageArr[key][_i] + ';</a>';
               textControl.append(_html);
               keywordLength(textControl);
               if (!keywordHide(textControl)) {

@@ -246,7 +246,7 @@
                                 $textControl.append('<span class="group-title">'+ title +'</span>');
                             }
                             selectFlag = false;
-                            $textControl.append('<a class="group_item">'+ text +';</a>');
+                            $textControl.append('<a class="group_item" title="' + text + '">' + text + ';</a>');
 
                         } else {
                             allChoose = false;
