@@ -79,17 +79,18 @@ requirejs(['https://content.banggood.cn/Content/config.js'], function () {
 
           if (dtlink == 'multiSelect_temp') {
             for (i in storageArr[key]) {
-              for (_key in storageArr[key][i]) {
-                textControl.append('<span class="group-title">'+ _key +'</span>');
-                
-                for (j in storageArr[key][i][_key]) {
-                  textControl.append('<a class="group_item" title="'+ storageArr[key][i][_key][j].text +'">'+ storageArr[key][i][_key][j].text +';</a>');
+                for (_key in storageArr[key][i]) {
+                    if (key == 'Account_text')
+                        textControl.append('<span class="group-title">' + _key + '</span>');
 
-                  if (!keywordHide(textControl)) {
-                    keywordHideRest(textControl);
-                  } 
+                    for (j in storageArr[key][i][_key]) {
+                        textControl.append('<a class="group_item" title="' + storageArr[key][i][_key][j].text + '">' + storageArr[key][i][_key][j].text + ';</a>');
+
+                        if (!keywordHide(textControl)) {
+                            keywordHideRest(textControl);
+                        }
+                    }
                 }
-              }
             }
 
           } else if (dtlink == 'keyWord_temp') {

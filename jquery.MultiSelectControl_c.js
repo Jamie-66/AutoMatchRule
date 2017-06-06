@@ -227,27 +227,28 @@
                         if (checks.prop('checked')) {
                             var value = $.trim(checks.val());
                             var text = $.trim(checks.parent().text());
-                            
-                            if (num == 0) {
-                                _cookieValue = (value + ',' + text);
-                            } else {
-                                _cookieValue = (num < args.cookieCount) ? (_cookieValue + ';' + value + ',' + text) : _cookieValue;
+
+                            if ($.inArray(value, _selectedIds) == -1) {//去重
+                                if (num == 0) {
+                                    _cookieValue = (value + ',' + text);
+                                } else {
+                                    _cookieValue = (num < args.cookieCount) ? (_cookieValue + ';' + value + ',' + text) : _cookieValue;
+                                }
+
+                                num++;
+                                _selectedIds.push(value);
+
+                                select_obj_arr.push(text);
+                                selectObj[title] = select_obj_arr;
+                                select_id_arr.push({ value: value, text: text });
+                                selectObj_id[title] = select_id_arr;
+
+                                if (selectFlag && args.groupId == 'Account_text') {//Account_text类型才需要group-title
+                                    $textControl.append('<span class="group-title">' + title + '</span>');
+                                }
+                                selectFlag = false;
+                                $textControl.append('<a class="group_item" title="' + text + '">' + text + ';</a>');
                             }
-
-                            num++;
-                            _selectedIds.push(value);
-
-                            select_obj_arr.push(text);
-                            selectObj[title] = select_obj_arr;
-                            select_id_arr.push({value: value, text: text});
-                            selectObj_id[title] = select_id_arr;
-
-                            if (selectFlag) {
-                                $textControl.append('<span class="group-title">'+ title +'</span>');
-                            }
-                            selectFlag = false;
-                            $textControl.append('<a class="group_item" title="' + text + '">' + text + ';</a>');
-
                         } else {
                             allChoose = false;
                         }
